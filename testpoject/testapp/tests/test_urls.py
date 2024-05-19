@@ -1,8 +1,8 @@
 import json
 import pytest
 from django.urls import reverse
-from rest_framework import status
 from django.test.client import encode_multipart
+from rest_framework import status
 
 from ..models import CurrentModel
 

@@ -39,10 +39,14 @@ def test_app_list_id(api_client, current_model_factory, rel_current_factory):
 
 
 @pytest.mark.django_db
-def test_current_create(api_client, current_model_factory, rel_current_factory):
+@pytest.mark.parametrize("form", [
+    {'name': 'serg', 'description': 'sfsdfsdf', 'count': 2},
+    {'name': 'hgf', 'description': 'asd', 'count': 10}
+])
+def test_current_create(api_client, form):
     endpoint = f"{reverse('current-create')}"
 
-    data = {'name': 'serg', 'description': 'sfsdfsdf', 'count': 2}
+    data = form
     content = encode_multipart('BoUnDaRyStRiNg', data)
     content_type = 'multipart/form-data; boundary=BoUnDaRyStRiNg'
 
